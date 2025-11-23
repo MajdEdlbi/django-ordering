@@ -5,6 +5,16 @@
     <title>index</title>
 </head>
 <body>
-<h1>The menu</h1>
+ {% for meal_type in meals %}
+    <h3>{{ meal_type.1 }}</h3>
+
+    {% for item in item_list %}
+        {% if item.meal_type == meal_type.0 %}
+            <a href="{% url 'menu_item' item.pk %}">{{ item.meal }}</a><br>
+        {% endif %}
+    {% endfor %}
+
+{% endfor %}
+
 </body>
 </html>
